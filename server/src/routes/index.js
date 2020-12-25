@@ -1,9 +1,22 @@
-const {Router} = require('express');
-
+const {Router, urlencoded} = require('express');
+const homeRouter = require('./homeRouter');
+const sortRouter = require('./sortRouter');
+const classeRouter = require('./classeRouter');
 const router = Router();
 
-router.get('/', (req, res) => {
-  res.send('<h1>这里是Movie Club</h1>')
-});
+
+// 解析x-www-form-urlencoded
+router.use(urlencoded({
+  extended: true,
+}));
+
+// 主页内容
+router.use('/home', homeRouter);
+
+// 排行榜
+router.use('/sort', sortRouter);
+
+// 分类
+router.use('/classe', classeRouter);
 
 module.exports = router;
