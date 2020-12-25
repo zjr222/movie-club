@@ -4,7 +4,6 @@ const router = Router();
 
 // 正在热映
 router.get('/hoting', async (req, res) => {
-  console.log(1)
   const result = await spider.getInProgressHot();
   res.send(result);
 });
